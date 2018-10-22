@@ -1,0 +1,393 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  background: radial-gradient(closest-side, #a1e7e4, #7e92ee) no-repeat center;
+}
+
+html,
+body {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.3fr 0.1fr 3.7fr 3.7fr;
+  grid-gap: 8px;
+}
+
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  color: #fff;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.records {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 0.3fr);
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.time {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.counter {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.stars {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 1em;
+  color: #a79595b7;
+}
+
+.stared {
+ color: #8b0b6b;
+}
+
+.reset {
+  grid-column: 3;
+  grid-row: 2;
+  transform: rotate(-100deg);
+  font-weight: bolder;
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+  background-color: #8b0b6b;
+  color: #fff;
+  font-size: 0.6em;
+  padding: 3px;
+  cursor: pointer;
+  justify-self: center;
+  align-self: center;
+  box-shadow: 4px -2 4px rgba(0, 0, 0, 0.34), -4px 2 4px rgba(0, 0, 0, 0.34)
+}
+
+.cards {
+  grid-column: 1 / -1;
+  grid-row: 3 / -1;
+  display: grid;
+  width: 45%;
+  margin-bottom: 55px;
+  justify-self: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 15px;
+  padding: 25px;
+  box-shadow: 0 7px 5px rgba(0, 0, 0, 0.26), -6px 4px 5px rgba(0, 0, 0, 0.26), 6px -7px 5px rgba(0, 0, 0, 0.26);
+  border-radius: 20px;
+  perspective: 900px;
+}
+
+.card {
+  background: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14), 4px 4px 3px rgba(0, 0, 0, 0.34);
+  border-radius: 15px;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+
+.card:active {
+  transform: scale(0.98);
+  transition: transform 0.2s;
+}
+
+.open {
+  pointer-events: none;
+  transform: rotateY(180deg);
+  background-color: #8b0b6b;
+  transition: 0.5s;
+}
+
+.match {
+  background: #057cac;
+  animation: match 1s;
+}
+
+@keyframes match {
+  0% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(-180deg);
+  }
+}
+
+.notMatch {
+  background: #ad2121;
+}
+
+.coverImg, .cardImg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 30px;
+  backface-visibility: hidden;
+  border-radius: 50%;
+}
+
+.hide {
+  display: none;
+}
+
+.cardImg {
+  transform: rotateY(180deg);
+}
+
+/*
+* Making the cards Responsive
+*/
+@media screen and (max-width: 1300px) {
+  .cards {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    width: 50%;
+  }
+  .card {
+    height: 115px;
+    width: 120px;
+    margin: 8px;
+  }
+}
+
+@media screen and (max-width: 1204px) {
+  .cards {
+    width: 55%;
+
+  }
+  .card {
+    height: 115px;
+    width: 120px;
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 1054px) {
+  .cards {
+    width: 57%;
+
+  }
+  .card {
+    height: 95px;
+    width: 100px;
+    margin: 3px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .cards {
+    width: 62%;
+  }
+}
+
+@media screen and (max-width: 784px) {
+  .cards {
+    width: 66%;
+  }
+}
+
+@media screen and (max-width: 734px) {
+  .cards {
+    width: 73%;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .cards {
+    width: 78%;
+  }
+  .records {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly
+  }
+}
+
+@media screen and (max-width: 649px) {
+  .cards {
+    width: 82%;
+    padding: 13px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .cards {
+    width: 86%;
+    padding: 13px;
+  }
+}
+
+@media screen and (max-width: 535px) {
+  .cards {
+    width: 88%;
+    padding: 13px;
+  }
+  .card {
+    height: 85px;
+    width: 90px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cards {
+    width: 94%;
+    padding: 8px;
+  }
+  .card {
+    height: 75px;
+    width: 80px;
+  }
+  .coverImg, .cardImg {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 471px) {
+  .cards {
+    width: 92%;
+    padding: 8px;
+  }
+  .card {
+    height: 80px;
+    width: 85px;
+  }
+}
+
+@media screen and (max-width: 433px) {
+  .cards {
+    width: 98%;
+    padding: 3px;
+  }
+  .card {
+    height: 70px;
+    width: 75px;
+  }
+}
+
+.modal {
+  min-height: 100%;
+  min-width: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.26);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -120px;
+}
+
+.modalContent {
+  width: 35%;
+  background-color: #fff;
+  margin: 12% auto;
+  padding: 12px;
+}
+
+.modalContent header {
+  background: #7e92ee;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 12px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26);
+  margin: -12px;
+}
+
+@keyframes animateModalContent {
+  0% {
+    transform: scale(0.89) translateY(-10%);
+    }
+  50% {
+    transform: scale(0.45);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.modalContent {
+  animation: animateModalContent 1s ease-in;
+}
+
+.modalContent #close {
+  align-self: center;
+  font-size: 1.3em;
+  font-weight: bolder;
+  cursor: pointer;
+
+}
+
+#close:hover {
+  color: #000;
+}
+
+.modalContent footer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 45%;
+  margin: auto;
+}
+
+.modalContent .summary {
+  justify-self: center;
+  text-align: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.26), -3px -2px 5px rgba(0, 0, 0, 0.26);
+}
+
+.summary #starsSummary {
+  color: #a79595b7;
+}
+
+.summary #timeSummary {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.modalContent footer button {
+  background: #7e92ee;
+  color: white;
+  padding: 0.45em;
+  width: 85px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26), 4px -4px 5px rgba(0, 0, 0, 0.26), 0 -2px 5px rgba(0, 0, 0, 0.26);
+}
+
