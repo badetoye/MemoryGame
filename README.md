@@ -9,8 +9,6 @@
 * [Reference](#reference)
 
 ## Instructions
-Memory card game is a one-player game. The player tries to concentrate much as s/he flips some cards to match them against each other. The detailed instruction is as below:
-
 * The player flips one card over to reveal its underlying symbol.
 * A *timer* will start immediately after the first card is clicked/flipped to capture the total time it takes the player to complete the game.
 * While the first card is still flipped, the player then turns over a second card, trying to find the corresponding card with the same symbol.
