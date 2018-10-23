@@ -93,7 +93,9 @@ function showCard() {
 
   if (timer.textContent === `00:00:00`) timeCounter();
 
-  this.classList.add('open');
+  if (firstCard === undefined) {
+    this.classList.add('open');
+  }
 
   if (!isFlipped) {
     //first click
@@ -103,7 +105,9 @@ function showCard() {
   }
 
   //second click
-  secondCard = this;
+  if (firstCard != undefined && secondCard === undefined) {
+    secondCard = this;
+  }
 
   //check if the flipped cards matched
   checkMatch();
@@ -158,15 +162,17 @@ function removeStar() {
 }
 
 function emptyVariables() {
-  [firstCard, secondCard, isFlipped] = [undefined, undefined, false];
+  if (firstCard != undefined && secondCard != undefined & isFlipped != false) {
+    [firstCard, secondCard, isFlipped] = [undefined, undefined, false];
+  }
 }
 
 function gameOver() {
-  modal.classList.remove('hide');
+  clearTimeout(timeUpdate);
   timeSummary.textContent = timer.textContent;
   starsSummary.innerHTML = starWrapper.innerHTML;
-  counterSummary.innerHTML = moves.textContent;
-  clearTimeout(timeUpdate);
+  counterSummary.innerHTML = count + 1 + " Move(s)";
+  modal.classList.remove('hide');
 }
 
 modal.addEventListener('click', (evt) => {
